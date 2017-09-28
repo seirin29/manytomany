@@ -21,3 +21,19 @@ Route::get('/create', function () {
 	$role = new Role(['name'=>'Administrator']);
 	$user->roles()->save($role);
 });
+
+Route::get('/read', function () {
+    $user = User::findorFail(2);
+	//dd($user->roles);
+	foreach($user->roles as $role){
+		//dd($role);
+		echo $role->name;
+	}
+});
+
+
+
+
+
+
+
