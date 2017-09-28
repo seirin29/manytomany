@@ -51,5 +51,18 @@ Route::get('/delete', function () {
 	}
 });
 
+Route::get('/attach', function () {
+    $user = User::findorFail(2);
+	$user->roles()->attach(4);
+});
 
+Route::get('/detach', function () {
+    $user = User::findorFail(2);
+	$user->roles()->detach(4);
+});
+
+Route::get('/sync', function () {
+    $user = User::findorFail(2);
+	$user->roles()->sync([1, 4]);
+});
 
