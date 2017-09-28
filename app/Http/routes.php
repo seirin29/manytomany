@@ -18,7 +18,7 @@ Route::get('/', function () {
 
 Route::get('/create', function () {
     $user = User::find(2);
-	$role = new Role(['name'=>'Administrator']);
+	$role = new Role(['name'=>'Author']);
 	$user->roles()->save($role);
 });
 
@@ -44,7 +44,12 @@ Route::get('/update', function () {
 	}
 });
 
-
+Route::get('/delete', function () {
+    $user = User::findorFail(2);
+	foreach($user->roles as $role){
+		$role->whereId(3)->delete();
+	}
+});
 
 
 
